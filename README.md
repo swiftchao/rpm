@@ -4,6 +4,10 @@
       yum install rpmdevtools
 ##  2 开始制作rpm包
 ###   2.1 生成目录树
+        可以修改默认值%_topdir
+	vim .rpmmacros
+	%_topdir ${HOME}/rpmbuild
+	%_topdir /home/chaofei/code/git/rpm/rpmbuild
         cd ${HOME}
         rpmdev-setuptree
         tree rpmbuild
@@ -21,12 +25,12 @@
        cd ${HOME}
        tree rpmbuild
 ###  2.7 查看rpm包的信息
-       cd /home/chaofei/code/git/rpm/rpmbuild/RPMS/x86_64
+       cd ${HOME}/rpmbuild/RPMS/x86_64
        rpm -qpi hellorpm-0.0.1-1.x86_64.rpm
 ###  2.8 解压rpm包，查看是否制作正确
        rpm2cpio hellorpm-0.0.1-1.x86_64.rpm | cpio -idmv
 ## 3 安装rpm包
-     cd /home/chaofei/code/git/rpm/rpmbuild/RPMS/x86_64
+     cd ${HOME}/rpmbuild/RPMS/x86_64
      rpm -qa | grep hello
      sudo rpm -ivh hellorpm-0.0.1-1.x86_64.rpm
 ###  3.1 测试是否安装成功
