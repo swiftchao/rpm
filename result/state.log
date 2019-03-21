@@ -1,0 +1,13 @@
+2019-03-22 03:07:02,398 - Mock Version: 1.3.5
+2019-03-22 03:07:06,397 - Start: yum update
+2019-03-22 03:07:15,570 - Finish: yum update
+2019-03-22 03:07:15,600 - Finish: chroot init
+2019-03-22 03:07:15,608 - Start: build phase for hellorpm-0.0.1-1.src.rpm
+2019-03-22 03:07:15,623 - Start: build setup for hellorpm-0.0.1-1.src.rpm
+2019-03-22 03:07:26,197 - Finish: build setup for hellorpm-0.0.1-1.src.rpm
+2019-03-22 03:07:26,197 - Start: rpmbuild hellorpm-0.0.1-1.src.rpm
+2019-03-22 03:07:42,430 - Finish: rpmbuild hellorpm-0.0.1-1.src.rpm
+2019-03-22 03:07:42,439 - Finish: build phase for hellorpm-0.0.1-1.src.rpm
+2019-03-22 03:07:42,444 - Start: clean chroot
+2019-03-22 03:07:48,019 - Finish: clean chroot
+2019-03-22 03:07:48,021 - Finish: run

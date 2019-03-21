@@ -1,0 +1,71 @@
+概述
+mock是一个构建rpm包的工具，你可以使用mock来编译不同系统（CentOS,RedHat和Fedora）版本的rpm包。
+相比通过rpmbuild来构建rpm包，使用mock通过使用chroot技术，可以在一个干净的环境中来构建rpm包。
+
+安装mock
+yum install epel-release -y
+
+yum install mock -y
+需要运行mock的用户都需要添加到mock这个组里，可以通过usermod来把用户添加到mock组。
+
+usermod -a -G mock <user>
+usermod -a -G mock chaofei 
+构建准备
+使用mock来构建rpm包，需要要有source rpm。
+如果有一个spec文件，则可以通过rpmbuild来构建source rpm
+
+rpmbuild -bs xxx.spec
+rpmbuild -bs hellorpm.spec
+rpmbuild -ba hellorpm.spec
+当然，你也可以直接下载source rpm，这样就少了上面的这个步骤。
+
+构建RPM包
+运行mock命令时，你必须要执行一个配置文件，当前系统上可用的配置文件都在/etc/mock目录下。如下面的内容：
+
+-rw-r--r-- 1 root mock  1595 Aug 16 22:42 epel-5-i386.cfg
+-rw-r--r-- 1 root mock  1585 Aug 16 22:42 epel-5-x86_64.cfg
+-rw-r--r-- 1 root mock  1812 Aug 16 22:42 epel-6-i386.cfg
+-rw-r--r-- 1 root mock  1592 Aug 16 22:42 epel-6-ppc64.cfg
+-rw-r--r-- 1 root mock  2250 Aug 16 22:42 epel-6-x86_64.cfg
+-rw-r--r-- 1 root mock  2362 Aug 16 22:42 epel-7-aarch64.cfg
+-rw-r--r-- 1 root mock  2399 Aug 16 22:42 epel-7-ppc64le.cfg
+-rw-r--r-- 1 root mock  2394 Aug 16 22:42 epel-7-x86_64.cfg
+-rw-r--r-- 1 root mock  2022 Aug 16 22:42 fedora-25-aarch64.cfg
+-rw-r--r-- 1 root mock  2016 Aug 16 22:42 fedora-25-armhfp.cfg
+-rw-r--r-- 1 root mock  2033 Aug 16 22:42 fedora-25-i386.cfg
+-rw-r--r-- 1 root mock  2014 Aug 16 22:42 fedora-25-ppc64.cfg
+-rw-r--r-- 1 root mock  2022 Aug 16 22:42 fedora-25-ppc64le.cfg
+-rw-r--r-- 1 root mock  2015 Aug 16 22:42 fedora-25-s390x.cfg
+-rw-r--r-- 1 root mock  2016 Aug 16 22:42 fedora-25-x86_64.cfg
+-rw-r--r-- 1 root mock  2018 Aug 16 22:42 fedora-26-aarch64.cfg
+-rw-r--r-- 1 root mock  2016 Aug 16 22:42 fedora-26-armhfp.cfg
+-rw-r--r-- 1 root mock  2033 Aug 16 22:42 fedora-26-i386.cfg
+-rw-r--r-- 1 root mock  2010 Aug 16 22:42 fedora-26-ppc64.cfg
+-rw-r--r-- 1 root mock  2018 Aug 16 22:42 fedora-26-ppc64le.cfg
+-rw-r--r-- 1 root mock  2015 Aug 16 22:42 fedora-26-s390x.cfg
+-rw-r--r-- 1 root mock  2016 Aug 16 22:42 fedora-26-x86_64.cfg
+-rw-r--r-- 1 root mock  2018 Aug 16 22:42 fedora-27-aarch64.cfg
+-rw-r--r-- 1 root mock  2160 Aug 16 22:42 fedora-27-armhfp.cfg
+-rw-r--r-- 1 root mock  2033 Aug 16 22:42 fedora-27-i386.cfg
+-rw-r--r-- 1 root mock  2010 Aug 16 22:42 fedora-27-ppc64.cfg
+-rw-r--r-- 1 root mock  2018 Aug 16 22:42 fedora-27-ppc64le.cfg
+-rw-r--r-- 1 root mock  2012 Aug 16 22:42 fedora-27-s390x.cfg
+-rw-r--r-- 1 root mock  2016 Aug 16 22:42 fedora-27-x86_64.cfg
+-rw-r--r-- 1 root mock  2018 Aug 16 22:42 fedora-28-aarch64.cfg
+-rw-r--r-- 1 root mock  2160 Aug 16 22:42 fedora-28-armhfp.cfg
+-rw-r--r-- 1 root mock  2033 Aug 16 22:42 fedora-28-i386.cfg
+初始化和删除mock chroot
+你可以先初始化mock使用的chroot，这样就可以减少构建rpm包的时间
+
+mock -r epel-7-x86_64 --init
+你可以通过下面的命令来删除chroot
+
+mock -r epel-7-x86_64 --clean
+执行构建
+mock -r epel-7-x86_64 --rebuild xxx.src.rpm
+mock -r epel-7-x86_64 --rebuild hellorpm-0.0.1-1.src.rpm
+mock -r epel-7-x86_64 --rebuild hellorpm-0.0.1-1.src.rpm --resultdir=${HOME}/code/git/rpm/result
+当构建完成，结构和日志都在/var/lib/mock/epel-7-x86_64/result目录下。你可可以通过添加参数 –resultdir来调整目录
+
+结论
+通过mock可以构建不同架构不同版本下的rpm包，mock可以保证整个过程不受之前的构建的影响，并且提供了一个简单的接口用于重复构建rpm包。
