@@ -1,12 +1,18 @@
-all:test-main
-max.o:max.c
-	gcc -o max.o -c max.c
-swap.o:swap.c
-	gcc -o swap.o -c swap.c
-test-main.o:test-main.c
-	gcc -o test-main.o -c test-main.c
-test-main:max.o swap.o test-main.o
-	gcc -o test-main swap.o max.o test-main.o
+cc=gcc
+prom=test-main
+deps=max.h swap.h
+obj=test-main.o max.o swap.o
+
+$(prom):$(obj)
+	$(cc) -o $(prom) $(obj)
+
+test-main.o: test-main.c $(deps)
+	$(cc) -c test-main.c
+max.o: max.c $(deps)
+	$(cc) -c max.c
+swap.o: swap.c $(deps)
+	$(cc) -c swap.c
+
 clean:
 	rm -f max.o swap.o test-main.o test-main
 install:
