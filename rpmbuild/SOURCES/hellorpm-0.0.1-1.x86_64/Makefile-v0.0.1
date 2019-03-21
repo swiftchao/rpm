@@ -1,6 +1,5 @@
-objects=test-main.o max.o swap.o
-test-main:$(objects)
-	gcc -o test-main $(objects)
+test-main:test-main.o max.o swap.o
+	gcc -o test-main test-main.o max.o swap.o
 
 test-main.o:test-main.c max.h swap.h
 	gcc -c test-main.c
@@ -10,7 +9,7 @@ swap.o:swap.c
 	gcc -c swap.c
 
 clean:
-	rm -rf test-main $(objects)
+	rm -f max.o swap.o test-main.o test-main
 install:
 	mkdir -p ${HOME}/bin
 	echo mkdir -p ${HOME}/bin >> /tmp/chaofeirpm.log
