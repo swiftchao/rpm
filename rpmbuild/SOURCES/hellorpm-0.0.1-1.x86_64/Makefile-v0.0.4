@@ -2,16 +2,11 @@ objects=test-main.o max.o swap.o
 test-main:$(objects)
 	gcc -o test-main $(objects)
 
-$(objects):
-
-.PHONY:alltest
-alltest:test1
-test1:
-	echo $@ $(subst 1,, $@)
+$(objects):max.h swap.h
 
 .PHONY:clean
 clean:
-	-rm -rf test-main $(objects) *.gch
+	-rm -rf test-main $(objects)
 
 # -rm 作用报错也继续执行
 
@@ -30,20 +25,3 @@ uninstall:
 	rm -f ${HOME}/bin/test-main
 	#rm -f /usr/bin/test-main
 	rm -f /tmp/chaofeirpm.log
-
-.PHONY:test
-test:
-	objects=*.o
-	echo $(objects)
-	#objects=$(wildcard *o)
-	#echo $(objects)
-  vpath="%.h ./"
-	#echo $(vpath)
-
-.PHONY: cleanall cleanobj cleandiff
-cleanall: cleanobj cleandiff
-	rm -f test-main
-cleanobj:
-	rm -f *.o
-cleandiff:
-	rm -f *.diff

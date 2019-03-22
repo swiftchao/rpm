@@ -2,16 +2,11 @@ objects=test-main.o max.o swap.o
 test-main:$(objects)
 	gcc -o test-main $(objects)
 
-$(objects):
-
-.PHONY:alltest
-alltest:test1
-test1:
-	echo $@ $(subst 1,, $@)
+$(objects):max.h swap.h
 
 .PHONY:clean
 clean:
-	-rm -rf test-main $(objects) *.gch
+	-rm -rf test-main $(objects)
 
 # -rm 作用报错也继续执行
 
