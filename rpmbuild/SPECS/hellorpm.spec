@@ -7,6 +7,10 @@ Group:          Development/Libraries
 License:        GPL 
 URL:            https://github.com:swiftchao/rpm/rpmbuild
 Source0:        %{name}-%{version}-%{release}.%{_arch}.tar.gz 
+#将patch文件放在rpmbuild/SOURCES目录下
+#在Sourcexx结束和Buildrequires之前加入patch，一般未使用补丁号按递增命名
+#add patch
+Patch0:0001-test-patch.patch
 
 %description
 %{summary}
@@ -15,6 +19,10 @@ Source0:        %{name}-%{version}-%{release}.%{_arch}.tar.gz
 #cur=/root/rpmbuild/BUILD
 cd $RPM_SOURCE_DIR
 tar -xvf $RPM_SOURCE_DIR/%{name}-%{version}-%{release}.%{_arch}.tar.gz
+
+%setup -n %{name}-%{version}-%{release}.%{_arch}
+#在setup后build之前加入使用patch
+%patch0 -p4
 
 %build
 cd $RPM_SOURCE_DIR/%{name}-%{version}-%{release}.%{_arch}

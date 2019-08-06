@@ -1,0 +1,7 @@
+diff --git a/rpmbuild/SOURCES/hellorpm-0.0.1-1.x86_64/test-patch.txt b/rpmbuild/SOURCES/hellorpm-0.0.1-1.x86_64/test-patch.txt
+index 6f56cc6..864129c 100644
+--- a/rpmbuild/SOURCES/hellorpm-0.0.1-1.x86_64/test-patch.txt
++++ b/rpmbuild/SOURCES/hellorpm-0.0.1-1.x86_64/test-patch.txt
+@@ -1 +1,2 @@
+ this is a file for test patch.
++add 0001-test-patch.patch
