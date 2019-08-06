@@ -5,7 +5,7 @@
 ##  2 开始制作rpm包
 ###   2.1 生成目录树
         可以修改默认值%_topdir
-        vim .rpmmacros
+        vim ~/.rpmmacros
         %_topdir ${HOME}/rpmbuild
         %_topdir /home/chaofei/code/git/rpm/rpmbuild
         cd ${HOME}
