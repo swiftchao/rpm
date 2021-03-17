@@ -60,3 +60,4 @@ rm -rf $RPM_BUILD_ROOT
 #/test-main
 
 %changelog * Wed Mar 1  2019 Chao Fei <chaofeibest@163.com> -0.0.1-1
+
