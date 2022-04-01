@@ -1,0 +1,25 @@
+all:test-main
+max.o:max.c
+	gcc -o max.o -c max.c
+swap.o:swap.c
+	gcc -o swap.o -c swap.c
+test-main.o:test-main.c
+	gcc -o test-main.o -c test-main.c
+test-main:max.o swap.o test-main.o
+	gcc -o test-main swap.o max.o test-main.o
+clean:
+	rm -f max.o swap.o test-main.o test-main
+install:
+	mkdir -p ${HOME}/bin
+	echo mkdir -p ${HOME}/bin >> /tmp/chaofeirpm.log
+	cp test-main ${HOME}/bin/test-main
+	chmod a+x ${HOME}/bin/test-main
+	#cp test-main /usr/bin/test-main
+	#chmod a+x /usr/bin/test-main
+	echo ${HOME}/bin/test-main
+	${HOME}/bin/test-main
+	echo ${HOME}/bin/test-main >> /tmp/chaofeirpm.log
+uninstall:
+	rm -f ${HOME}/bin/test-main
+	#rm -f /usr/bin/test-main
+	rm -f /tmp/chaofeirpm.log
