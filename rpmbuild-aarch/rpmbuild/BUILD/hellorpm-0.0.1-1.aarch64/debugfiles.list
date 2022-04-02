@@ -1,2 +1,9 @@
 %dir /usr/lib/debug
-/usr/lib/debug/test-main.debug
+%dir /usr/lib/debug/usr
+%dir /usr/lib/debug/usr/bin
+%dir /usr/lib/debug/usr/local
+%dir /usr/lib/debug/usr/local/share
+%dir /usr/lib/debug/usr/local/share/hellorpm-0.0.1-1.aarch64
+/usr/lib/debug/usr/bin/test-main.debug
+/usr/lib/debug/usr/local/share/hellorpm-0.0.1-1.aarch64/test-main.debug
+/usr/src/debug/hellorpm-0.0.1-1.aarch64
