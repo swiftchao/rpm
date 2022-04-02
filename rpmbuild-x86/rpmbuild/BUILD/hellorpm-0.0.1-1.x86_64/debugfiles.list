@@ -1,6 +1,15 @@
 %dir /usr/lib/debug
+%dir /usr/lib/debug/usr
+%dir /usr/lib/debug/usr/bin
+%dir /usr/lib/debug/usr/local
+%dir /usr/lib/debug/usr/local/share
+%dir /usr/lib/debug/usr/local/share/hellorpm-0.0.1-1.x86_64
 %dir /usr/lib/debug/.build-id
-%dir /usr/lib/debug/.build-id/b8
-/usr/lib/debug/test-main.debug
-/usr/lib/debug/.build-id/b8/2cfa2d8db7e3894892754520eb712010917e1d
-/usr/lib/debug/.build-id/b8/2cfa2d8db7e3894892754520eb712010917e1d.debug
+%dir /usr/lib/debug/.build-id/9c
+/usr/lib/debug/usr/bin/test-main.debug
+/usr/lib/debug/usr/local/share/hellorpm-0.0.1-1.x86_64/test-main.debug
+/usr/lib/debug/.build-id/9c/15622b77206e171fa2b127a3f08bc0d1b2fc33
+/usr/lib/debug/.build-id/9c/15622b77206e171fa2b127a3f08bc0d1b2fc33.debug
+/usr/lib/debug/.build-id/9c/15622b77206e171fa2b127a3f08bc0d1b2fc33.1
+/usr/lib/debug/.build-id/9c/15622b77206e171fa2b127a3f08bc0d1b2fc33.1.debug
+/usr/src/debug/hellorpm-0.0.1-1.x86_64
