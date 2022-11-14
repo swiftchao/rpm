@@ -1,0 +1,15 @@
+%dir /usr/lib/debug
+%dir /usr/lib/debug/usr
+%dir /usr/lib/debug/usr/bin
+%dir /usr/lib/debug/usr/local
+%dir /usr/lib/debug/usr/local/share
+%dir /usr/lib/debug/usr/local/share/hellorpm-0.0.1.oe2003.aarch64
+%dir /usr/lib/debug/.build-id
+%dir /usr/lib/debug/.build-id/56
+/usr/lib/debug/usr/bin/test-main.debug
+/usr/lib/debug/usr/local/share/hellorpm-0.0.1.oe2003.aarch64/test-main.debug
+/usr/lib/debug/.build-id/56/b6b70860b9d7f308a936969290941f3ef6121d.1
+/usr/lib/debug/.build-id/56/b6b70860b9d7f308a936969290941f3ef6121d
+/usr/lib/debug/.build-id/56/b6b70860b9d7f308a936969290941f3ef6121d.debug
+/usr/lib/debug/.build-id/56/b6b70860b9d7f308a936969290941f3ef6121d.1.debug
+/usr/src/debug/hellorpm-0.0.1.oe2003.aarch64

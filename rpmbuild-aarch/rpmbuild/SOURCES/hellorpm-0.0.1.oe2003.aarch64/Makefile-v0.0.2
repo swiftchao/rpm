@@ -1,0 +1,27 @@
+objects=test-main.o max.o swap.o
+test-main:$(objects)
+	gcc -o test-main $(objects)
+
+test-main.o:test-main.c max.h swap.h
+	gcc -c test-main.c
+max.o:max.c
+	gcc -c max.c
+swap.o:swap.c
+	gcc -c swap.c
+
+clean:
+	rm -rf test-main $(objects)
+install:
+	mkdir -p ${HOME}/bin
+	echo mkdir -p ${HOME}/bin >> /tmp/chaofeirpm.log
+	cp test-main ${HOME}/bin/test-main
+	chmod a+x ${HOME}/bin/test-main
+	#cp test-main /usr/bin/test-main
+	#chmod a+x /usr/bin/test-main
+	echo ${HOME}/bin/test-main
+	${HOME}/bin/test-main
+	echo ${HOME}/bin/test-main >> /tmp/chaofeirpm.log
+uninstall:
+	rm -f ${HOME}/bin/test-main
+	#rm -f /usr/bin/test-main
+	rm -f /tmp/chaofeirpm.log
